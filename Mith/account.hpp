@@ -22,8 +22,6 @@ public:
 		std::string category);
 
 	void print() const;
-	int static howPassSafe(std::string);
-	int howPassSafe() const;
 
 	void setName(std::string newName);
 	void setPass(std::string newPass);

@@ -131,14 +131,18 @@
     <ClCompile Include="database.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Mithrandir.cpp" />
+    <ClCompile Include="open.cpp" />
     <ClCompile Include="passRandomizer.cpp" />
+    <ClCompile Include="save.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="account.hpp" />
     <ClInclude Include="database.hpp" />
     <ClInclude Include="menu.hpp" />
+    <ClInclude Include="open.hpp" />
     <ClInclude Include="passRandomizer.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="save.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Mith.rc" />

@@ -8,7 +8,11 @@ public:
 	static char randGreat();
 	static char randLetter();
 
-	std::string static randPass(size_t numSigns, size_t numGreat, size_t numSpecial);
+	std::string static randPass();
+
+	int static ratePassSafty(std::string const pass);
+
+	int static getLimitedInt(std::string const credits, size_t limit);
 
 };
 

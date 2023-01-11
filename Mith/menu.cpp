@@ -1,38 +1,75 @@
 #include "menu.hpp"
-#include "passRandomizer.hpp"
 
-void Menu::hello(Database &db) {
-	bool correct = false;
-	std::string pass;
-	while (!correct) {
-		std::cout << "Podaj haslo : " << std::endl;
-		std::cin >> pass;
-		if (pass == "maslo") {
-			std::cout << "Podano poprawne haslo" << std::endl;
-			correct = true;
+using namespace formatVariables;
+
+bool Menu::hello(Database &db) {
+	bool validated = false;
+	std::string pass, newPath;
+	std::string path = "dirMithran.txt";
+	std::cout << "    Podaj nazwe  pliku do wczytania danych, lub wpisz : " << std::endl;
+	std::cout << "0 - By uzyc pliku domyslnego : " << path << std::endl;
+	std::cout << "1 - By zaczac bez pliku :" << std::endl;
+	std::cin >> newPath;
+
+
+	if (newPath == "1"){
+		newPath = Menu::getLimitedString("Podaj nazwe nowego pliku :");
+		path = txtSufix(newPath);
+		pass = Menu::getLimitedString("Podaj haslo do nowego pliku :");
+	}
+	else 
+	{
+		if (newPath != "0") {
+			while (!isFilePresent(txtSufix(newPath))) { std::cout << "Bledna sciezka do pliku, podaj inna :" << std::endl; std::cin >> newPath; }
+			path = txtSufix(newPath);
 		}
-		else {
-			std::cout << "Podano bledne haslo" << std::endl;
+	}
+
+	bool pathFound = isFilePresent(path);
+	if (pathFound)
+	{
+		while (!validated) {
+			std::cout << "Podaj haslo : " << std::endl;
+			std::cin >> pass;
+			int records = 0, categories = 0;
+			validated = Open::validate(path, pass);
+			if (validated) {
+				std::cout << "podano poprawne haslo" << std::endl;
+				Open::read(db, path, pass);
+			}
+			else {
+				std::string timeStmp = __TIMESTAMP__;
+				std::cout << timeStmp << std::endl;
+				Save::nastyAccesSave(pass, path, timeStmp);
+				std::cout << "Podano bledne haslo" << std::endl;
+			}
 		}
 	}
 
 	bool exit = false;
 	std::string stop;
 	while (!exit) {
-		exit = main(db);;
+		exit = main(db, pass, path);;
 	}
+	if (validated) { Menu::save(db, pass, path); }
+	return validated;
 }
 
-bool Menu::main(Database &db) {
+bool Menu::main(Database &db, std::string & pass, std::string& path) {
 	bool exit = false;
 	std::string val;
-	std::cout << "0 - wyjscie" << std::endl;
-	std::cout << "1 - dodanie rekordu" << std::endl;
-	std::cout << "2 - edycja rekordu" << std::endl;
-	std::cout << "3 - wyfiltruj i pokaz" << std::endl;
-	std::cout << "4 - dodaj kategorie" << std::endl;
-	std::cout << "5 - " << std::endl;
-	std::cout << "6 - wyswietl kategorie" << std::endl;
+	std::cout << " 0 - wyjdz i zapisz" << std::endl;
+	std::cout << " 1 - dodaj rekord" << std::endl;
+	std::cout << " 2 - edytuj rekord" << std::endl;
+	std::cout << " 3 - wyfiltruj i pokaz rekordy" << std::endl;
+	std::cout << " 4 - posortuj i pokaz rekordy" << std::endl;
+	std::cout << " 5 - usun wybrane rekordy" << std::endl;
+	std::cout << " 6 - dodaj kategorie" << std::endl;
+	std::cout << " 7 - usun kategorie" << std::endl;
+	std::cout << " 8 - wyswietl kategorie" << std::endl;
+	std::cout << " 9 - zmien haslo" << std::endl;
+	std::cout << "10 - zmien sciezke" << std::endl;
+	std::cout << "11 - zapisz" << std::endl;
 	std::cout << std::endl;
 	std::cin >> val;
 	std::cout << std::endl;
@@ -43,64 +80,137 @@ bool Menu::main(Database &db) {
 	case 1:	addRecord(db); break;
 	case 2:	editRecord(db);	break;
 	case 3:	filterRecords(db); break;
-	case 4:	addCategory(db); break;
-	case 6:	db.printCategorys(); break;
+	case 4:	sortRecords(db); break;
+	case 5:	removeRecords(db); break;
+	case 6:	addCategory(db); break;
+	case 7:	removeCategory(db); break;
+	case 8:	printCategorys(db); break;
+	case 9:	changePass(pass); break;
+	case 10: changePath(path); break;
+	case 11: save(db, pass, path); break;
 	default: std::cout << "Podales bledna wartosc" << std::endl; break;
 	}
 	return exit;
 }
 
-void Menu::addCategory(Database& db) {
-	std::string name;
-	std::cout << "Podaj nazwe kategorii do dodania : " << std::endl;
-	std::cin >> name;
-	db.addCategory(name);
-};
-
 void Menu::addRecord(Database &db) {
-	std::string name, pass, category, website, login;
+	std::string name, pass, category, website, login, categoryNext;
+	bool correct = false;
 	std::cout << "Podaj nazwe : " << std::endl;
 	std::cin >> name;
-	pass = passAdding();
-	Account::howPassSafe(pass);
+	pass = addPass();
+	std::cout << "Dotychasowa ilosc uzyc hasla : " << db.passUses(pass) << std::endl;
+	PassRandomizer::ratePassSafty(pass);
 	std::cout << "Podaj kategorie : " << std::endl;
 	std::cin >> category;
+	correct = db.isOnCatList(category);
+	while (!correct) {
+		db.printCategorys();
+		std::cout << "Tej kategorii jeszcze nie ma, wpisz 0 by dodac lub wybierz jedna z powyzszych" << std::endl;
+		std::cin >> categoryNext;
+		if (categoryNext == "0") { correct = true; }
+		else {
+			correct = db.isOnCatList(categoryNext);
+			category = categoryNext;
+		}
+	}
 	std::cout << "Podaj strone | 0 dla pustego : " << std::endl;
 	std::cin >> website;
 	std::cout << "Podaj login | 0 dla pustego : " << std::endl;
 	std::cin >> login;
 
-	website = website == "0" ? "/" : website;
-	login = login == "0" ? "/" : login;
+	website = website == "0" ? "\0" : website;
+	login = login == "0" ? "\0" : login;
 	db.add(Account(name, pass, category, website, login));
 }
 
-void Menu::editRecord(Database &db)
+void Menu::editRecord(Database& db)
 {
 	std::string name, field, newVal;
 	bool exit = false;
 	{
-		{ 
+		{
 			{
-			std::cout << "Podaj nazwe rekordu : " << std::endl;
-			std::cin >> name;
+				std::cout << "Podaj nazwe rekordu : " << std::endl;
+				std::cin >> name;
 
-			std::cout << "0 - Wyjdz : " << std::endl;
-			std::cout << "1 - Nazwa : " << std::endl;
-			std::cout << "2 - Haslo : " << std::endl;
-			std::cout << "3 - Kategoria : " << std::endl;
-			std::cout << "4 - Strona : " << std::endl;
-			std::cout << "5 - Login : " << "\n";
+				std::cout << "0 - Wyjdz : " << std::endl;
+				std::cout << "1 - Nazwa : " << std::endl;
+				std::cout << "2 - Haslo : " << std::endl;
+				std::cout << "3 - Kategoria : " << std::endl;
+				std::cout << "4 - Strona : " << std::endl;
+				std::cout << "5 - Login : " << "\n";
+			}
+			std::cout << "Podaj pole do edycji - liczba : " << "\n";
+			std::cin >> field;
 		}
-	std::cout << "Podaj pole do edycji - liczba : " << "\n";
-	std::cin >> field;
-	}
-	std::cout << "Podaj nowa wartosc : " << "\n";
-	std::cin >> newVal; }
-	exit = switchEdit(db, name, field, newVal);			
+		std::cout << "Podaj nowa wartosc : " << "\n";
+		std::cin >> newVal; }
+	exit = switchEdit(db, name, field, newVal);
+};
+
+void Menu::removeRecords(Database &db) {
+	std::vector<Account> listAcc;
+	std::cout << "Usuwanie wyfiltrowanej grupy rekordow" << std::endl;
+	std::cout << "Podaj ilosc filtrow | 0 by usunac wszystko" << std::endl;
+	listAcc = listRecords(db);
+	db.remove(listAcc);
+};
+
+void Menu::sortRecords(Database &db) {
+	db.sortIt(3, 1);
+	Database::print(db.getDb());
+};
+
+void Menu::filterRecords(Database& db) {
+	std::vector<Account> listAcc;
+	std::cout << "Podaj ilosc filtrow | 0 by pokazac wszystko" << std::endl;
+	listAcc = listRecords(db);
+	Database::print(listAcc);
+};
+
+void Menu::addCategory(Database& db) {
+	std::string name;
+	name = getLimitedString("Podaj nazwe kategorii do dodania : ");
+	if (!db.addCategory(name)){ std::cout << "!!! Taka kategoria juz jest !!!" << std::endl; } ;
+};
+
+void Menu::removeCategory(Database& db) {
+	std::string name;
+	std::cout << "Podaj nazwe kategorii do usuniecia : " << std::endl;
+	std::cin >> name;
+	if (!db.removeCategory(name)) { std::cout << "!!! Nie ma takiej kategorii !!!" << std::endl; };
 }
 
-std::vector<Account> listRecords(Database &db){
+void Menu::printCategorys(Database& db) {
+	db.printCategorys();
+}
+
+void Menu::changePass(std::string &pass) {
+	std::string newPass;
+	std::cout << "Podaj nowe haslo : " << std::endl;
+	std::cin >> newPass;	
+	std::cout << "Nowe haslo to : " << newPass << std::endl;
+	pass = newPass;
+}
+
+void Menu::changePath(std::string& path)
+{
+	std::string newPath;
+	std::cout << "Aktualna sciezka to : " << path << std::endl;
+	std::cout << "Podaj nowa sciezke : " << std::endl;
+	std::cin >> newPath;
+	path = txtSufix(newPath);
+	std::cout << "Nowa sciezka to : " << path << std::endl;
+}
+
+void Menu::save(Database& db, std::string pass, std::string path) {
+	std::cout << "Zapisywanie" << std::endl;
+	Save::saveAll(db, path, pass);
+	std::cout << "Zapisano" << std::endl;
+}
+
+std::vector<Account> Menu::listRecords(Database& db) {
 	std::vector<Account> listAcc = db.getDb();
 	size_t i, filter;
 	std::string val;
@@ -122,59 +232,51 @@ std::vector<Account> listRecords(Database &db){
 	return listAcc;
 }
 
-void Menu::removeRecords(Database &db) {
-	std::vector<Account> listAcc;
-	std::cout << "Usuwanie wyfiltrowanej grupy rekordow" << std::endl;
-	std::cout << "Podaj ilosc filtrow" << std::endl;
-	listAcc = listRecords(db);
-	db.remove(listAcc);
-};
-void Menu::sortRecords(Database &db) {};
-void Menu::filterRecords(Database &db) {
-	std::vector<Account> listAcc;
-		std::cout << "Podaj ilosc filtrow" << std::endl;
-		listAcc = listRecords(db);
-	Database::print(listAcc);
-}
-
-std::string Menu::passAdding() {
+std::string Menu::addPass() {
 	std::string pass;
 
 	std::cout << "Podaj haslo | 0 dla generowania hasla : " << std::endl;
 	std::cin >> pass;
-	if (pass == "0") {
-		std::string length, capitals, specials, letPrint;
-
-		std::cout << "Podaj dlugosc : " << std::endl;
-		std::cin >> length;
-		std::cout << "Podaj ilosc wielkich liter : " << std::endl;
-		std::cin >> capitals;
-		std::cout << "Podaj ilosc znakow specjalnych : " << std::endl;
-		std::cin >> specials;
-
-		pass = PassRandomizer::randPass(stoi(length), stoi(capitals), stoi(specials));
-
-		std::cout << "Jesli chcesz zobaczyc haslo na ekranie wpisz 0 : " << std::endl;
-		std::cin >> letPrint;
-
-		if (letPrint == "0")
-		{
-			std::cout << "Twoje haslo to : " << pass << std::endl;
-		}
-	}
+	if (pass == "0") { pass = PassRandomizer::randPass(); }
 	return pass;
 }
 
-bool Menu::switchEdit(Database& db, std::string name, std::string field, std::string newVal) {
+bool Menu::switchEdit(Database& db, std::string const name, std::string const field, std::string const newVal) {
 	bool exit = false;
+	Account * acc = db.find(name);
+	std::cout << "accPtr : " << acc << std::endl;
 	switch (stoi(field)) {
 	case 0:	exit = true; break;
-	case 1: db.find(name)->setName(newVal); break;
-	case 2: db.find(name)->setPass(newVal); break;
-	case 3: db.find(name)->setCategory(newVal); break;
-	case 4: db.find(name)->setWebsite(newVal); break;
-	case 5: db.find(name)->setLogin(newVal); break;
+	case 1: acc->setName(newVal); break;
+	case 2: acc->setPass(newVal); break;
+	case 3: acc->setCategory(newVal); break;
+	case 4: acc->setWebsite(newVal); break;
+	case 5: acc->setLogin(newVal); break;
 	default: std::cout << "Podales bledna wartosc pola" << std::endl; break;
 	}
 	return exit;
+}
+
+std::string Menu::getLimitedString(std::string const credits) {
+	std::string stringIn;
+	size_t size = limit;
+	while (size >= limit) {
+		std::cout << "Tekst nie moze byc dluzszy niz " << limit << " znakow" << std::endl;
+		std::cout << credits << std::endl;
+		std::cin >> stringIn;
+		size = stringIn.length();
+	}
+	return stringIn;
+}
+
+bool Menu::isFilePresent(const std::string& name) {
+	struct stat buffer;
+	return (stat(name.c_str(), &buffer) == 0);
+}
+
+std::string Menu::txtSufix(std::string path) {
+	if (!(path.find(".txt") == path.length() - 4)) {
+		path.append(".txt");
+	}
+	return path;
 }

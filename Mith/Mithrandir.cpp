@@ -3,36 +3,24 @@
 #include "passRandomizer.hpp"
 #include "database.hpp"
 #include "menu.hpp"
+#include "save.hpp"
 
 int main()
 {
     srand(time(NULL));
     Database db1;
 
-    db1.addCategory("medycyna alternatywna");
-    db1.addCategory("UFO");
-    db1.addCategory("porno");
-    auto ac1 = Account("czwarty wymiar", "jp2", "leczenie");
-    auto ac2 = Account("dupa", "jp2", "leczenie");
-    //ac1->print();
-    db1.add(ac1);
-    db1.add(ac2);
+    //db1.addCategory("medycyna alternatywna");
+    //db1.addCategory("UFO");
+    //db1.addCategory("porno");
+    //auto ac1 = Account("czwarty wymiar", "gumowedildo", "leczenie");
+    //auto ac2 = Account("dupa", "2137", "leczenie");
+    //auto ac3 = Account("hub", "696969", "porn");
+    //db1.add(ac1);
+    //db1.add(ac2);
+    //db1.add(ac3);
 
-    std::cout << &db1.getDb()[0] << std::endl;
-    std::cout << &db1.getDb()[1] << std::endl;
-
-
-    std::cout << (& db1.getDb()[0])->getName() << std::endl;
-    std::cout << (& db1.getDb()[1])->getName() << std::endl;
-
-    Database::print(db1.getDb());
-    Database::print(Database::filter(db1.getDb(), 3, "leczenie"));
-
-    std::cout << "Hello World!\n" << std::endl ;
-
-    std::cout << db1.getDb().size() << std::endl;
-
-    Menu::hello(db1);
-
+    bool correct = Menu::hello(db1);
+        
 }
 

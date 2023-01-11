@@ -1,6 +1,7 @@
 #pragma once
 #include "account.hpp"
 #include <functional>
+#include <algorithm>
 #include <vector>
 #include <string>
 #include <iostream>
@@ -19,19 +20,23 @@ public:
 	std::vector<std::string> getCat() const;
 	std::vector<Account> getDb() const;
 
-	bool isOnCatList(std::string category) const;
+	bool isOnCatList(std::string const category) const;
+	size_t positionOnCatList(std::string const name) const;
 	void printCategorys() const;
-	void addCategory(std::string category);
-	void removeCategory(std::string category);
+	bool addCategory(std::string category);
+	bool removeCategory(std::string category);
 
 	bool isPresent(std::string) const;
-	size_t position(std::string name) const;
-	Account* find(std::string accPtr) const;
+	size_t position(std::string const name) const;
+	Account* find(std::string const accPtr) const;
+	struct NameComparator;
+	size_t passUses(std::string const pass) const;
 	void add(const Account& account);
-	void remove(std::vector<Account> &accList);
-	void sort(std::function<Database>);
-	static std::vector<Account> filter(std::vector<Account> &listAcc, size_t filter, std::string val);
-	static void print(std::vector<Account> listAccPtr);
+	void remove(std::vector<Account> listAcc);
+	void sortIt(size_t firstFilter, size_t secondFilter);
+	bool compareNames(Account acc1, Account acc2);
+	static std::vector<Account> filter(std::vector<Account> listAcc, const size_t filter, const std::string val);
+	static void print(const std::vector<Account> listAcc);
 
 };
 
