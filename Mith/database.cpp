@@ -3,6 +3,7 @@
 Database::Database() {}
 
 std::vector<Account> Database::getDb() const { return listOfAccounts; };
+std::vector<Account>* Database::getDbPtr() { return &listOfAccounts; };
 std::vector<std::string> Database::getCat() const { return listOfCategories; };
 
 bool Database::isOnCatList(std::string newCategory) const {
@@ -66,14 +67,15 @@ size_t Database::position(std::string name) const {
 	return position;
 }
 
-Account* Database::find(std::string name) const {
-	Account* accountPtr = nullptr;
-	auto db = this->getDb();
-	for (auto account : db)
-	{
-		if (account.getName() == name) { accountPtr = &account; break; }
-	}
-	return accountPtr;
+Account* Database::find(std::string name) {
+	auto db = this->getDbPtr();
+	std::vector<Account> guwno = *db;
+	//int i = 0;
+	//for (auto& account : guwno)
+	//{
+	//	if (account.getName() == name) { i = account; }
+	//}
+	return &db->at(2);
 }
 
 size_t Database::passUses(std::string pass) const {

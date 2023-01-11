@@ -18,7 +18,8 @@ public:
 	Database();
 
 	std::vector<std::string> getCat() const;
-	std::vector<Account> getDb() const;
+	std::vector<Account> getDb() const; 
+	std::vector<Account>* getDbPtr();
 
 	bool isOnCatList(std::string const category) const;
 	size_t positionOnCatList(std::string const name) const;
@@ -28,7 +29,7 @@ public:
 
 	bool isPresent(std::string) const;
 	size_t position(std::string const name) const;
-	Account* find(std::string const accPtr) const;
+	Account* find(std::string const accPtr);
 	struct NameComparator;
 	size_t passUses(std::string const pass) const;
 	void add(const Account& account);

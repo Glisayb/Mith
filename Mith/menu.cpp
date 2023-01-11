@@ -243,15 +243,15 @@ std::string Menu::addPass() {
 
 bool Menu::switchEdit(Database& db, std::string const name, std::string const field, std::string const newVal) {
 	bool exit = false;
-	Account * acc = db.find(name);
-	std::cout << "accPtr : " << acc << std::endl;
+	Account* acc = db.find(name);
+	//std::cout << "accPtr : " << acc << std::endl;
 	switch (stoi(field)) {
 	case 0:	exit = true; break;
 	case 1: acc->setName(newVal); break;
-	case 2: acc->setPass(newVal); break;
-	case 3: acc->setCategory(newVal); break;
-	case 4: acc->setWebsite(newVal); break;
-	case 5: acc->setLogin(newVal); break;
+	//case 2: acc->setPass(newVal); break;
+	//case 3: acc->setCategory(newVal); break;
+	//case 4: acc->setWebsite(newVal); break;
+	//case 5: acc->setLogin(newVal); break;
 	default: std::cout << "Podales bledna wartosc pola" << std::endl; break;
 	}
 	return exit;
