@@ -1,33 +1,21 @@
 #include "menu.hpp"
 
 using namespace formatVariables;
+std::string defaultPath = "dirMithran.txt";
 
-bool Menu::hello(Database &db) {
+Menu::Menu(std::string path)
+{
+	if (path == "0") { path = defaultPath; }
+	this->path = txtSufix(path);
+}
+
+bool Menu::hello() {
 	bool validated = false;
-	std::string pass, newPath;
-	std::string path = "dirMithran.txt";
-	std::cout << "    Podaj nazwe  pliku do wczytania danych, lub wpisz : " << std::endl;
-	std::cout << "0 - By uzyc pliku domyslnego : " << path << std::endl;
-	std::cout << "1 - By zaczac bez pliku :" << std::endl;
-	std::cin >> newPath;
-
-
-	if (newPath == "1"){
-		newPath = Menu::getLimitedString("Podaj nazwe nowego pliku :");
-		path = txtSufix(newPath);
-		pass = Menu::getLimitedString("Podaj haslo do nowego pliku :");
+	if (!isFilePresent(path)) {
+		this->pass = Menu::getLimitedString("Podaj haslo do nowego pliku :");
+		validated = true;
 	}
-	else 
-	{
-		if (newPath != "0") {
-			while (!isFilePresent(txtSufix(newPath))) { std::cout << "Bledna sciezka do pliku, podaj inna :" << std::endl; std::cin >> newPath; }
-			path = txtSufix(newPath);
-		}
-	}
-
-	bool pathFound = isFilePresent(path);
-	if (pathFound)
-	{
+	else {
 		while (!validated) {
 			std::cout << "Podaj haslo : " << std::endl;
 			std::cin >> pass;
@@ -45,19 +33,18 @@ bool Menu::hello(Database &db) {
 			}
 		}
 	}
-
 	bool exit = false;
 	std::string stop;
 	while (!exit) {
-		exit = main(db, pass, path);;
+		exit = main();;
 	}
-	if (validated) { Menu::save(db, pass, path); }
+	if (validated) { Menu::save(); }
 	return validated;
 }
 
-bool Menu::main(Database &db, std::string & pass, std::string& path) {
+bool Menu::main() {
 	bool exit = false;
-	std::string val;
+	size_t index;
 	std::cout << " 0 - wyjdz i zapisz" << std::endl;
 	std::cout << " 1 - dodaj rekord" << std::endl;
 	std::cout << " 2 - edytuj rekord" << std::endl;
@@ -71,29 +58,29 @@ bool Menu::main(Database &db, std::string & pass, std::string& path) {
 	std::cout << "10 - zmien sciezke" << std::endl;
 	std::cout << "11 - zapisz" << std::endl;
 	std::cout << std::endl;
-	std::cin >> val;
+	index = getLimitedValue("", 11);
 	std::cout << std::endl;
 
-	switch (stoi(val))
+	switch (index)
 	{
 	case 0: exit = true; break;
-	case 1:	addRecord(db); break;
-	case 2:	editRecord(db);	break;
-	case 3:	filterRecords(db); break;
-	case 4:	sortRecords(db); break;
-	case 5:	removeRecords(db); break;
-	case 6:	addCategory(db); break;
-	case 7:	removeCategory(db); break;
-	case 8:	printCategorys(db); break;
-	case 9:	changePass(pass); break;
-	case 10: changePath(path); break;
-	case 11: save(db, pass, path); break;
+	case 1:	addRecord(); break;
+	case 2:	editRecord();	break;
+	case 3:	filterRecords(); break;
+	case 4:	sortRecords(); break;
+	case 5:	removeRecords(); break;
+	case 6:	addCategory(); break;
+	case 7:	removeCategory(); break;
+	case 8:	printCategorys(); break;
+	case 9:	changePass(); break;
+	case 10: changePath(); break;
+	case 11: save(); break;
 	default: std::cout << "Podales bledna wartosc" << std::endl; break;
 	}
 	return exit;
 }
 
-void Menu::addRecord(Database &db) {
+void Menu::addRecord() {
 	std::string name, pass, category, website, login, categoryNext;
 	bool correct = false;
 	std::cout << "Podaj nazwe : " << std::endl;
@@ -124,7 +111,7 @@ void Menu::addRecord(Database &db) {
 	db.add(Account(name, pass, category, website, login));
 }
 
-void Menu::editRecord(Database& db)
+void Menu::editRecord()
 {
 	std::string name, field, newVal;
 	bool exit = false;
@@ -149,48 +136,48 @@ void Menu::editRecord(Database& db)
 		std::cin >> field;
 			
 		newVal = getLimitedString("Podaj nowa wartosc : ");
-		exit = switchEdit(db, name, field, newVal);
+		exit = switchEdit( name, field, newVal);
 	}
 };
 
-void Menu::removeRecords(Database &db) {
+void Menu::removeRecords() {
 	std::vector<Account> listAcc;
 	std::cout << "Usuwanie wyfiltrowanej grupy rekordow" << std::endl;
 	std::cout << "Podaj ilosc filtrow | 0 by usunac wszystko" << std::endl;
-	listAcc = listRecords(db);
+	listAcc = listRecords();
 	db.remove(listAcc);
 };
 
-void Menu::sortRecords(Database &db) {
+void Menu::sortRecords() {
 	db.sortIt(3, 1);
 	Database::print(db.getDb());
 };
 
-void Menu::filterRecords(Database& db) {
+void Menu::filterRecords() const {
 	std::vector<Account> listAcc;
 	std::cout << "Podaj ilosc filtrow | 0 by pokazac wszystko" << std::endl;
-	listAcc = listRecords(db);
+	listAcc = listRecords();
 	Database::print(listAcc);
 };
 
-void Menu::addCategory(Database& db) {
+void Menu::addCategory() {
 	std::string name;
 	name = getLimitedString("Podaj nazwe kategorii do dodania : ");
 	if (!db.addCategory(name)){ std::cout << "!!! Taka kategoria juz jest !!!" << std::endl; } ;
 };
 
-void Menu::removeCategory(Database& db) {
+void Menu::removeCategory() {
 	std::string name;
 	std::cout << "Podaj nazwe kategorii do usuniecia : " << std::endl;
 	std::cin >> name;
 	if (!db.removeCategory(name)) { std::cout << "!!! Nie ma takiej kategorii !!!" << std::endl; };
 }
 
-void Menu::printCategorys(Database& db) {
+void Menu::printCategorys() const {
 	db.printCategorys();
 }
 
-void Menu::changePass(std::string &pass) {
+void Menu::changePass() {
 	std::string newPass;
 	std::cout << "Podaj nowe haslo : " << std::endl;
 	std::cin >> newPass;	
@@ -198,7 +185,7 @@ void Menu::changePass(std::string &pass) {
 	pass = newPass;
 }
 
-void Menu::changePath(std::string& path)
+void Menu::changePath()
 {
 	std::string newPath;
 	std::cout << "Aktualna sciezka to : " << path << std::endl;
@@ -208,13 +195,13 @@ void Menu::changePath(std::string& path)
 	std::cout << "Nowa sciezka to : " << path << std::endl;
 }
 
-void Menu::save(Database& db, std::string pass, std::string path) {
+void Menu::save() const {
 	std::cout << "Zapisywanie" << std::endl;
 	Save::saveAll(db, path, pass);
 	std::cout << "Zapisano" << std::endl;
 }
 
-std::vector<Account> Menu::listRecords(Database& db) {
+std::vector<Account> Menu::listRecords() const {
 	std::vector<Account> listAcc = db.getDb();
 	size_t i, filter;
 	std::string val;
@@ -245,7 +232,7 @@ std::string Menu::addPass() {
 	return pass;
 }
 
-bool Menu::switchEdit(Database& db, std::string const name, std::string const field, std::string const newVal) {
+bool Menu::switchEdit(std::string const &name, std::string const &field, std::string const &newVal) {
 	bool exit = false;
 	Account* acc = db.find(name);
 	switch (stoi(field)) {
@@ -260,7 +247,7 @@ bool Menu::switchEdit(Database& db, std::string const name, std::string const fi
 	return exit;
 }
 
-std::string Menu::getLimitedString(const std::string credits) {
+std::string Menu::getLimitedString(const std::string &credits) {
 	std::string stringIn;
 	size_t size = limit;
 	while (size >= limit) {
@@ -272,7 +259,7 @@ std::string Menu::getLimitedString(const std::string credits) {
 	return stringIn;
 }
 
-size_t Menu::getLimitedValue(const std::string  credits, const size_t max) {
+size_t Menu::getLimitedValue(const std::string  &credits, const size_t &max) {
 	std::string stringIn;
 	size_t value = max+1;
 	while (value > max) {
@@ -296,9 +283,10 @@ bool Menu::isFilePresent(const std::string& name) {
 	return (stat(name.c_str(), &buffer) == 0);
 }
 
-std::string Menu::txtSufix(std::string path) {
+std::string Menu::txtSufix(const std::string &path) {
+	std::string confirmedPath = path;
 	if (!(path.find(".txt") == path.length() - 4)) {
-		path.append(".txt");
+		confirmedPath.append(".txt");
 	}
-	return path;
+	return confirmedPath;
 }

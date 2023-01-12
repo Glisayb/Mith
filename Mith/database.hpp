@@ -21,23 +21,28 @@ public:
 	std::vector<Account> getDb() const; 
 	std::vector<Account>* getDbPtr();
 
-	bool isOnCatList(std::string const category) const;
-	size_t positionOnCatList(std::string const name) const;
+	bool isOnCatList(const std::string &category) const;
+	size_t positionOnCatList(const std::string &name) const;
+	bool addCategory(const std::string &category);
+	bool removeCategory(const std::string &category);
 	void printCategorys() const;
-	bool addCategory(std::string category);
-	bool removeCategory(std::string category);
 
-	bool isPresent(std::string) const;
-	size_t position(std::string const name) const;
-	Account* find(std::string const accPtr);
-	struct NameComparator;
-	size_t passUses(std::string const pass) const;
+	bool isPresent(const std::string &name) const;
+	size_t position(const std::string &name) const;
+	Account* find(const std::string & name);
+
+	static void print(const std::vector<Account>& listAcc);
 	void add(const Account& account);
-	void remove(std::vector<Account> listAcc);
-	void sortIt(size_t firstFilter, size_t secondFilter);
-	bool compareNames(Account acc1, Account acc2);
-	static std::vector<Account> filter(std::vector<Account> listAcc, const size_t filter, const std::string val);
-	static void print(const std::vector<Account> listAcc);
+
+	void remove(const std::vector<Account> &listAcc);
+	void sortIt(const size_t &firstFilter, const size_t &secondFilter);
+
+	struct NameComparator;
+	bool compareNames(const Account &acc1, const Account &acc2) const;
+	static std::vector<Account> filter(const std::vector<Account> &listAcc, const size_t &filter, const std::string &val);
+
+	size_t passUses(const std::string& pass) const;
+
 
 };
 

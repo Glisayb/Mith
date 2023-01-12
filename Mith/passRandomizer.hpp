@@ -10,9 +10,9 @@ public:
 
 	std::string static randPass();
 
-	int static ratePassSafty(std::string const pass);
+	int static ratePassSafty(const std::string &pass);
 
-	int static getLimitedValue(std::string const credits, size_t limit);
+	int static getLimitedValue(const std::string &credits, const size_t &limit);
 
 };
 

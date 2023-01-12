@@ -23,11 +23,11 @@ public:
 
 	void print() const;
 
-	void setName(std::string newName);
-	void setPass(std::string newPass);
-	void setCategory(std::string newCategory);
-	void setWebsite(std::string newWebsite);
-	void setLogin(std::string newLogin);
+	void setName(std::string const &newName);
+	void setPass(std::string const &newPass);
+	void setCategory(std::string const &newCategory);
+	void setWebsite(std::string const &newWebsite);
+	void setLogin(std::string const &newLogin);
 
 	std::string getName() const;
 	std::string getPass() const;

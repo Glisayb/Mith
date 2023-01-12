@@ -5,10 +5,23 @@
 #include "menu.hpp"
 #include "save.hpp"
 
+
 int main()
 {
     srand(time(NULL));
-    Database db1;
+
+    //Database db1;
+
+    std::string path;
+        std::cout << "Podaj : " << std::endl;
+        std::cout << "    - insniejaca sciezke pliku do wczytania danych" << std::endl;
+        std::cout << "    - nieistniejaca dla stworzenia nowego pliku  " << std::endl;
+        std::cout << "    - 0 by uzyc pliku domyslnego" << std::endl;
+        std::cin >> path;        
+
+    Menu menu(path);
+
+    menu.hello();
 
     //db1.addCategory("medycyna alternatywna");
     //db1.addCategory("UFO");
@@ -20,7 +33,7 @@ int main()
     //db1.add(ac2);
     //db1.add(ac3);
 
-    bool correct = Menu::hello(db1);
+    //bool correct = Menu::hello(db1);
         
 }
 

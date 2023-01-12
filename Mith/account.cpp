@@ -31,11 +31,11 @@ std::string Account::getCategory() const { return this->category; };
 std::string Account::getWebsite() const { return this->website; };
 std::string Account::getLogin() const { return this->login; };
 
-void Account::setName(std::string name) { this->name = name; std::cout << "Nazwa zmieniona na : " << name << std::endl; };
-void Account::setPass(std::string pass) { this->pass = pass; std::cout << "Haslo - " << name << " zmienione na : " << pass << std::endl; };
-void Account::setCategory(std::string category) { this->category = category; std::cout << "Kategoria - " << name << " zmieniona na : " << category << std::endl; };
-void Account::setWebsite(std::string website) { this->website = website; std::cout << "Strona - " << name << " zmieniona na : " << website << std::endl; };
-void Account::setLogin(std::string login) { this->login = login; std::cout << "Login - " << name << " zmieniony na : " << login << std::endl; };
+void Account::setName(const std::string &name) { this->name = name; std::cout << "Nazwa zmieniona na : " << name << std::endl; };
+void Account::setPass(const std::string &pass) { this->pass = pass; std::cout << "Haslo - " << name << " zmienione na : " << pass << std::endl; };
+void Account::setCategory(const std::string &category) { this->category = category; std::cout << "Kategoria - " << name << " zmieniona na : " << category << std::endl; };
+void Account::setWebsite(const std::string &website) { this->website = website; std::cout << "Strona - " << name << " zmieniona na : " << website << std::endl; };
+void Account::setLogin(const std::string &login) { this->login = login; std::cout << "Login - " << name << " zmieniony na : " << login << std::endl; };
 
 void Account::print() const {
 	std::cout << "Nazwa : " << name << std::endl;

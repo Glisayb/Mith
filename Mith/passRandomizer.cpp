@@ -41,7 +41,7 @@ std::string PassRandomizer::randPass() {
 	return pass;
 }
 
-int PassRandomizer::ratePassSafty(std::string pass) {
+int PassRandomizer::ratePassSafty(const std::string &pass) {
 	int rating = 0;
 	int great = 0;
 	int specials = 0;
@@ -55,7 +55,7 @@ int PassRandomizer::ratePassSafty(std::string pass) {
 	return rating;
 }
 
-int PassRandomizer::getLimitedValue(std::string const credits, size_t limit) {
+int PassRandomizer::getLimitedValue(const std::string &credits, const size_t &limit) {
 	size_t size = limit;
 	std::string stringIn;
 	while (size >= limit) {

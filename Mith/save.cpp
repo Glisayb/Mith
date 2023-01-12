@@ -10,7 +10,7 @@ std::string randString(size_t size) {
 	return buzz;
 }
 
-void Save::nastyAccesSave(std::string wrongPass, std::string path, std::string timeStmp) {
+void Save::nastyAccesSave(const std::string &wrongPass, const std::string &path, const std::string &timeStmp) {
 	std::vector<std::string> lines = Open::getAll(path);
 	auto& timeLine = lines[margin-3];
 	auto timeBuzzed = buzzing(timeStmp);
@@ -27,7 +27,7 @@ void Save::nastyAccesSave(std::string wrongPass, std::string path, std::string t
 	file.close();
 }
 
-std::string Save::buzzing(std::string line) {
+std::string Save::buzzing(const std::string &line) {
 
 	size_t length = line.length();
 	int shifted;
@@ -49,7 +49,7 @@ std::string Save::buzzing(std::string line) {
 	return buzzed;
 }
 
-std::string Save::buzzing(std::string line, std::string pass) {
+std::string Save::buzzing(const std::string &line, const std::string &pass) {
 
 	size_t length = line.length();
 	int shifted;
@@ -72,7 +72,7 @@ std::string Save::buzzing(std::string line, std::string pass) {
 	return buzzed;
 }
 
-void Save::saveAll(Database db, std::string path, std::string pass)
+void Save::saveAll(const Database &db, const std::string &path, const std::string &pass)
 {
 	size_t catSize = db.getCat().size();
 	std::ofstream file;

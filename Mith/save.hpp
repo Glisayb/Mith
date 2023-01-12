@@ -16,13 +16,11 @@ namespace formatVariables {
 
 class Save
 {
-private:
-
 public:
 
-	static void saveAll(Database db, std::string path, std::string pass);
-	static std::string buzzing(std::string getted);
-	static std::string buzzing(std::string getted, std::string pass);
-	static void nastyAccesSave(std::string wrongPass, std::string path, std::string timeStmp);
+	static void saveAll(const Database &db, const std::string &path, const std::string &pass);
+	static std::string buzzing(const std::string &getted);
+	static std::string buzzing(const std::string &getted, const std::string &pass);
+	static void nastyAccesSave(const std::string &wrongPass, const std::string &path, const std::string &timeStmp);
 };
 

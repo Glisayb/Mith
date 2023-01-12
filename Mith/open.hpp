@@ -10,11 +10,11 @@ class Open
 {
 public :
 
-	static std::vector<std::string> getAll(std::string const path);
-	static bool validate(std::string const path, std::string const pass);
-	static std::string decipher(std::string const line);
-	static std::string decipher(std::string const line, std::string const pass);
-	static std::vector<std::string> decodeAll(std::string path, int & records, int & categories, std::string const pass);
-	static void read(Database &db, std::string const path, std::string const pass);
+	static std::vector<std::string> getAll(const std::string &path);
+	static bool validate(const std::string &path, const std::string &pass);
+	static std::string decipher(const std::string &line);
+	static std::string decipher(const std::string &line, const std::string &pass);
+	static std::vector<std::string> decodeAll(const std::string &path, int & records, int & categories, const std::string &pass);
+	static void read(Database &db, const std::string &path, const std::string &pass);
 };
 

@@ -6,14 +6,14 @@ std::vector<Account> Database::getDb() const { return listOfAccounts; };
 std::vector<Account>* Database::getDbPtr() { return &listOfAccounts; };
 std::vector<std::string> Database::getCat() const { return listOfCategories; };
 
-bool Database::isOnCatList(std::string newCategory) const {
+bool Database::isOnCatList(const std::string &newCategory) const {
 	bool isOnCatList = false;
 	for (std::string category : listOfCategories) {
 		if (newCategory == category) { isOnCatList = true; }
 	}
 	return isOnCatList;
 }
-size_t Database::positionOnCatList(std::string name) const {
+size_t Database::positionOnCatList(const std::string &name) const {
 	int position = -1;
 	for (size_t i = 0; i < listOfCategories.size(); i++)
 	{
@@ -31,13 +31,13 @@ void Database::printCategorys() const {
 	std::cout << std::endl;
 }
 
-bool Database::addCategory(std::string newCategory) {
+bool Database::addCategory(const std::string &newCategory) {
 	bool isPresent = isOnCatList(newCategory);
 	if (!isPresent) { listOfCategories.push_back(newCategory); };
 	return !isPresent;
 }
 
-bool Database::removeCategory(std::string category) {
+bool Database::removeCategory(const std::string &category) {
 	int position = positionOnCatList(category);
 	if (position >= 0) {
 		remove(filter(listOfAccounts, 3, category));
@@ -47,7 +47,7 @@ bool Database::removeCategory(std::string category) {
 	else return false;
 }
 
-bool Database::isPresent(std::string name) const {
+bool Database::isPresent(const std::string &name) const {
 	bool isPresent = false;
 	auto db = this->getDb();
 	for (auto account : db)
@@ -57,7 +57,7 @@ bool Database::isPresent(std::string name) const {
 	return isPresent;
 }
 
-size_t Database::position(std::string name) const {
+size_t Database::position(const std::string &name) const {
 	size_t position = -1;
 	auto db = this->getDb();
 	for (size_t i = 0; i < db.size(); i++)
@@ -67,12 +67,12 @@ size_t Database::position(std::string name) const {
 	return position;
 }
 
-Account* Database::find(std::string name) {
+Account* Database::find(const std::string &name) {
 	auto db = this->getDbPtr();
 	return &db->at(position(name));
 }
 
-size_t Database::passUses(std::string pass) const {
+size_t Database::passUses(const std::string &pass) const {
 	size_t uses = 0;
 	auto db = this->getDb();
 	for (auto account : db)
@@ -82,7 +82,7 @@ size_t Database::passUses(std::string pass) const {
 	return uses;
 }
 
-void Database::print(std::vector<Account> listAcc){
+void Database::print(const std::vector<Account> &listAcc){
 	for (Account acc : listAcc)	{acc.print();}
 }
 
@@ -106,7 +106,7 @@ auto contCat = [](Account acc, std::string val)->bool { return(acc.getCategory()
 auto contWeb = [](Account acc, std::string val)->bool { return(acc.getWebsite().find(val) != -1); };
 auto contLogin = [](Account acc, std::string val)->bool { return(acc.getLogin().find(val) != -1); };
 
-std::vector<Account> Database::filter(std::vector<Account> listAcc, size_t filter, std::string val) {
+std::vector<Account> Database::filter(const std::vector<Account> &listAcc, const size_t &filter, const std::string &val) {
 	std::vector<Account> filtredList;
 	bool match;
 	for (Account account : listAcc)
@@ -130,7 +130,7 @@ std::vector<Account> Database::filter(std::vector<Account> listAcc, size_t filte
 	return filtredList;
 }
 
-void Database::remove(std::vector<Account> listAcc) {
+void Database::remove(const std::vector<Account> &listAcc) {
 	for (Account acc : listAcc)
 	{
 		auto it = listOfAccounts.begin()+position(acc.getName());
@@ -141,7 +141,7 @@ void Database::remove(std::vector<Account> listAcc) {
 	}
 }
 
-void Database::sortIt(size_t firstFilter, size_t secondFilter) {
+void Database::sortIt(const size_t &firstFilter, const  size_t &secondFilter) {
 	size_t collection_to_loop []  = {firstFilter, secondFilter};
 	for (size_t var : collection_to_loop)
 	{
@@ -149,7 +149,7 @@ void Database::sortIt(size_t firstFilter, size_t secondFilter) {
 		{
 		case 1: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
-				return strcmp(x.getName().c_str() , y.getName().c_str()) > 0;
+				return strcmp(x.getName().c_str(), y.getName().c_str()) < 0;
 			});
 		case 2: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
@@ -157,7 +157,7 @@ void Database::sortIt(size_t firstFilter, size_t secondFilter) {
 			});
 		case 3: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
-				return strcmp(x.getCategory().c_str(), y.getCategory().c_str()) > 0;
+				return strcmp(x.getCategory().c_str(), y.getCategory().c_str()) < 0;
 			}); 
 		case 4: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{

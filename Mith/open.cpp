@@ -2,7 +2,7 @@
 
 using namespace formatVariables;
 
-std::vector<std::string> Open::getAll(std::string path)
+std::vector<std::string> Open::getAll(const std::string &path)
 {
 	std::vector<std::string> allLines;
 	std::fstream file;
@@ -16,7 +16,7 @@ std::vector<std::string> Open::getAll(std::string path)
 	return allLines;
 }
 
-bool Open::validate(std::string path, std::string pass) {
+bool Open::validate(const std::string &path, const std::string &pass) {
 	std::vector<std::string> allLines = Open::getAll(path);
 	std::string checkLine = allLines[margin-1];
 	int size = (checkLine[limit +2] - checkLine[limit + 1]);
@@ -32,7 +32,7 @@ bool Open::validate(std::string path, std::string pass) {
 	return (size == 5) && (marker >= 10000);
 }
 
-std::string Open::decipher(std::string line) {
+std::string Open::decipher(const std::string &line) {
 	std::string text;
 	int shift, size;
 	shift = line[limit + 2] - line[limit + 1];
@@ -49,7 +49,7 @@ std::string Open::decipher(std::string line) {
 	}
 	else return "0";
 }
-std::string Open::decipher(std::string line, std::string pass) {
+std::string Open::decipher(const std::string &line, const std::string &pass) {
 	std::string text;
 	int shift, size;
 	shift = line[limit + 2] - line[limit + 1];
@@ -70,7 +70,7 @@ std::string Open::decipher(std::string line, std::string pass) {
 	else return "0";
 }
 
-std::vector<std::string>  Open::decodeAll(std::string path, int &records, int &categories, std::string pass) {
+std::vector<std::string>  Open::decodeAll(const std::string &path, int &records, int &categories, const std::string &pass) {
 	std::vector<std::string> encryptedLines = Open::getAll(path);
 	std::vector<std::string> decodedLines;
 	if (true) {
@@ -89,7 +89,7 @@ std::vector<std::string>  Open::decodeAll(std::string path, int &records, int &c
 	return decodedLines;
 }
 
-void Open::read(Database &db, std::string path, std::string pass) {
+void Open::read(Database &db, const std::string &path, const std::string &pass) {
 	int records;
 	int categories;
 
