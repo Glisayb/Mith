@@ -33,22 +33,9 @@ bool Open::validate(const std::string &path, const std::string &pass) {
 }
 
 std::string Open::decipher(const std::string &line) {
-	std::string text;
-	int shift, size;
-	shift = line[limit + 2] - line[limit + 1];
-	size = shift > 0 ? shift : shift + omega - alfa;
-		if (size != 32) {
-		for (size_t i = 0; i < size; i++)
-		{
-			int sign, hornet = alfa + line[i] - line[beta - 1 - i];
-			if (hornet < alfa || hornet > omega) { sign = (hornet + omega - alfa); }
-			else { sign = hornet; }
-			text.push_back(sign);
-		}
-		return text;
-	}
-	else return "0";
+	return decipher(line, 0);
 }
+
 std::string Open::decipher(const std::string &line, const std::string &pass) {
 	std::string text;
 	int shift, size;

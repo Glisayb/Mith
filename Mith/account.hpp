@@ -11,6 +11,14 @@ private:
 	std::string login;
 
 public:
+	/// <summary>obiekt "konto" przechowujacy zestaw danych o uzywanym hasle
+	/// 
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="pass"></param>
+	/// <param name="category"></param>
+	/// <param name="website"></param>
+	/// <param name="login"></param>
 	Account(std::string name,
 		std::string pass,
 		std::string category,
@@ -21,6 +29,9 @@ public:
 		std::string pass,
 		std::string category);
 
+	/// <summary>funkcja przedstawia w zaaranzowany sposob komplet danych na temat konta na ekranie
+	/// 
+	/// </summary>
 	void print() const;
 
 	void setName(std::string const &newName);

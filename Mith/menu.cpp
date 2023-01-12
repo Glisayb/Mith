@@ -126,11 +126,7 @@ void Menu::editRecord()
 	if (exit == false) {
 		
 			std::cout << "0 - Wyjdz : " << std::endl;
-			std::cout << "1 - Nazwa : " << std::endl;
-			std::cout << "2 - Haslo : " << std::endl;
-			std::cout << "3 - Kategoria : " << std::endl;
-			std::cout << "4 - Strona : " << std::endl;
-			std::cout << "5 - Login : " << "\n";					
+			Menu::print5opions();
 				
 		std::cout << "Podaj pole do edycji - liczba : " << "\n";
 		std::cin >> field;
@@ -149,7 +145,11 @@ void Menu::removeRecords() {
 };
 
 void Menu::sortRecords() {
-	db.sortIt(3, 1);
+	Menu::print5opions();
+	size_t firstFilter = getLimitedValue("Wybierz 1'szy parametr sortowania",5);
+	size_t secondFilter = getLimitedValue("Wybierz 2'gi parametr sortowania", 5);
+
+	db.sortIt(firstFilter, secondFilter);
 	Database::print(db.getDb());
 };
 
@@ -289,4 +289,12 @@ std::string Menu::txtSufix(const std::string &path) {
 		confirmedPath.append(".txt");
 	}
 	return confirmedPath;
+}
+
+void Menu::print5opions() {
+	std::cout << "1 - Nazwa : " << std::endl;
+	std::cout << "2 - Haslo : " << std::endl;
+	std::cout << "3 - Kategoria : " << std::endl;
+	std::cout << "4 - Strona : " << std::endl;
+	std::cout << "5 - Login : " << std::endl;
 }

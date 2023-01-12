@@ -1,0 +1,82 @@
+\hypertarget{class_pass_randomizer}{}\doxysection{Pass\+Randomizer Class Reference}
+\label{class_pass_randomizer}\index{PassRandomizer@{PassRandomizer}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pass_randomizer_ae4fb5792af281e77bca6c3d65908dd2f}\label{class_pass_randomizer_ae4fb5792af281e77bca6c3d65908dd2f}} 
+static char {\bfseries rand\+Special} ()
+\item 
+\mbox{\Hypertarget{class_pass_randomizer_a380f9e5f47f3627adc8b7d294092bf28}\label{class_pass_randomizer_a380f9e5f47f3627adc8b7d294092bf28}} 
+static char {\bfseries rand\+Great} ()
+\item 
+\mbox{\Hypertarget{class_pass_randomizer_a3c3fbf733f1ef4a1820e940bbd168b57}\label{class_pass_randomizer_a3c3fbf733f1ef4a1820e940bbd168b57}} 
+static char {\bfseries rand\+Letter} ()
+\item 
+static std\+::string \mbox{\hyperlink{class_pass_randomizer_a367068be013403904522202a6f62f0be}{rand\+Pass}} ()
+\begin{DoxyCompactList}\small\item\em pobiera od uzytkownika informacje i na ich podstawie genereuje pseudo losowe haslo \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_pass_randomizer_adf7fe3aaa49c58452bd19abf05ea3a76}{rate\+Pass\+Safty}} (const std\+::string \&pass)
+\begin{DoxyCompactList}\small\item\em ocenia w skali szkolnej zlozonosc hasla \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_pass_randomizer_ad1f1aa7cf08001bfa9cb5675d80f586f}{get\+Limited\+Value}} (const std\+::string \&credits, const size\+\_\+t \&limit)
+\begin{DoxyCompactList}\small\item\em pobiera i strzeze (by wartosci byly liczbowe), a takze beszta i upomina \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pass_randomizer_ad1f1aa7cf08001bfa9cb5675d80f586f}\label{class_pass_randomizer_ad1f1aa7cf08001bfa9cb5675d80f586f}} 
+\index{PassRandomizer@{PassRandomizer}!getLimitedValue@{getLimitedValue}}
+\index{getLimitedValue@{getLimitedValue}!PassRandomizer@{PassRandomizer}}
+\doxysubsubsection{\texorpdfstring{getLimitedValue()}{getLimitedValue()}}
+{\footnotesize\ttfamily int Pass\+Randomizer\+::get\+Limited\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{credits,  }\item[{const size\+\_\+t \&}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+pobiera i strzeze (by wartosci byly liczbowe), a takze beszta i upomina 
+
+
+\begin{DoxyParams}{Parameters}
+{\em credits} & \\
+\hline
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pass_randomizer_a367068be013403904522202a6f62f0be}\label{class_pass_randomizer_a367068be013403904522202a6f62f0be}} 
+\index{PassRandomizer@{PassRandomizer}!randPass@{randPass}}
+\index{randPass@{randPass}!PassRandomizer@{PassRandomizer}}
+\doxysubsubsection{\texorpdfstring{randPass()}{randPass()}}
+{\footnotesize\ttfamily std\+::string Pass\+Randomizer\+::rand\+Pass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+pobiera od uzytkownika informacje i na ich podstawie genereuje pseudo losowe haslo 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pass_randomizer_adf7fe3aaa49c58452bd19abf05ea3a76}\label{class_pass_randomizer_adf7fe3aaa49c58452bd19abf05ea3a76}} 
+\index{PassRandomizer@{PassRandomizer}!ratePassSafty@{ratePassSafty}}
+\index{ratePassSafty@{ratePassSafty}!PassRandomizer@{PassRandomizer}}
+\doxysubsubsection{\texorpdfstring{ratePassSafty()}{ratePassSafty()}}
+{\footnotesize\ttfamily int Pass\+Randomizer\+::rate\+Pass\+Safty (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ocenia w skali szkolnej zlozonosc hasla 
+
+
+\begin{DoxyParams}{Parameters}
+{\em credits} & \\
+\hline
+{\em limit} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+pass\+Randomizer.\+hpp\item 
+pass\+Randomizer.\+cpp\end{DoxyCompactItemize}

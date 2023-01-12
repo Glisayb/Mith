@@ -1,0 +1,145 @@
+\hypertarget{class_open}{}\doxysection{Open Class Reference}
+\label{class_open}\index{Open@{Open}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_open_a9c6a1c9f5dca0a85b705f7f93e6a055b}{get\+All}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em tworzy wektor zakodowanych linii z pliku plaskiego \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_open_aa37e9ee1ca0064515c101054cc67c953}{validate}} (const std\+::string \&path, const std\+::string \&pass)
+\begin{DoxyCompactList}\small\item\em sprawdza poprawnosc hasla \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_open_a7e777e189820e1e9f58b2e451a872fc9}{decipher}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em szyfruje informacje niezabezpieczane haslem \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_open_ad916b08b8b9a1929bd41a4c721ad7016}{decipher}} (const std\+::string \&line, const std\+::string \&pass)
+\begin{DoxyCompactList}\small\item\em szyfruje informacje zabezpieczane haslem \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_open_ad6cf0078201e5d7721762aa743cf73bc}{decode\+All}} (const std\+::string \&path, int \&records, int \&categories, const std\+::string \&pass)
+\begin{DoxyCompactList}\small\item\em przeksztalca wektor zakodowanych linii w wektor niezakodowanych \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_open_a79fcc83483ec0e059b1d1c9d7ae9008f}{read}} (\mbox{\hyperlink{class_database}{Database}} \&db, const std\+::string \&path, const std\+::string \&pass)
+\begin{DoxyCompactList}\small\item\em wczytuje odkowane linie do bazy danych jako obiekty \mbox{\hyperlink{class_account}{Account}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_open_a7e777e189820e1e9f58b2e451a872fc9}\label{class_open_a7e777e189820e1e9f58b2e451a872fc9}} 
+\index{Open@{Open}!decipher@{decipher}}
+\index{decipher@{decipher}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{decipher()}{decipher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Open\+::decipher (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+szyfruje informacje niezabezpieczane haslem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_open_ad916b08b8b9a1929bd41a4c721ad7016}\label{class_open_ad916b08b8b9a1929bd41a4c721ad7016}} 
+\index{Open@{Open}!decipher@{decipher}}
+\index{decipher@{decipher}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{decipher()}{decipher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Open\+::decipher (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line,  }\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+szyfruje informacje zabezpieczane haslem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_open_ad6cf0078201e5d7721762aa743cf73bc}\label{class_open_ad6cf0078201e5d7721762aa743cf73bc}} 
+\index{Open@{Open}!decodeAll@{decodeAll}}
+\index{decodeAll@{decodeAll}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{decodeAll()}{decodeAll()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Open\+::decode\+All (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{int \&}]{records,  }\item[{int \&}]{categories,  }\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+przeksztalca wektor zakodowanych linii w wektor niezakodowanych 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+{\em records} & \\
+\hline
+{\em categories} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_open_a9c6a1c9f5dca0a85b705f7f93e6a055b}\label{class_open_a9c6a1c9f5dca0a85b705f7f93e6a055b}} 
+\index{Open@{Open}!getAll@{getAll}}
+\index{getAll@{getAll}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Open\+::get\+All (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+tworzy wektor zakodowanych linii z pliku plaskiego 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_open_a79fcc83483ec0e059b1d1c9d7ae9008f}\label{class_open_a79fcc83483ec0e059b1d1c9d7ae9008f}} 
+\index{Open@{Open}!read@{read}}
+\index{read@{read}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void Open\+::read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_database}{Database}} \&}]{db,  }\item[{const std\+::string \&}]{path,  }\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+wczytuje odkowane linie do bazy danych jako obiekty \mbox{\hyperlink{class_account}{Account}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & \\
+\hline
+{\em path} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_open_aa37e9ee1ca0064515c101054cc67c953}\label{class_open_aa37e9ee1ca0064515c101054cc67c953}} 
+\index{Open@{Open}!validate@{validate}}
+\index{validate@{validate}!Open@{Open}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily bool Open\+::validate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+sprawdza poprawnosc hasla 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+open.\+hpp\item 
+open.\+cpp\end{DoxyCompactItemize}

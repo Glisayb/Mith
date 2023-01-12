@@ -1,0 +1,290 @@
+\hypertarget{class_menu}{}\doxysection{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_menu_a1b9ecf674f0976144ac4432827f102c7}{Menu}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em obiekt pozwala rozpoczac nawigacje po aplikacji Mithrandir \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_ade42a24a5451333ec3c62cd8c2861017}{hello}} ()
+\begin{DoxyCompactList}\small\item\em menu powitalne, sprawdza haslo menu kaze sprawdza haslo i wczytuje zapisana baze, lub tworzy nowa i prosi o dodanie hasla \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a751db070b4585e710918aa639451a55d}{main}} ()
+\begin{DoxyCompactList}\small\item\em podstawowe menu nawigacyjne menu pozwala nawigowac i wielokrotnie wykonywaz polecenia az do wywolania zadania zamkniecia \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a588450dceb918209c6d7eda00230ac5e}{add\+Record}} ()
+\begin{DoxyCompactList}\small\item\em polecenie dodania rekordu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a27d8ef1bffed3ff99662307602b3090e}{edit\+Record}} ()
+\begin{DoxyCompactList}\small\item\em polecenie edycji rekordu \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a5233ecc37a6ae1793849401f89fdd56f}\label{class_menu_a5233ecc37a6ae1793849401f89fdd56f}} 
+void {\bfseries remove\+Records} ()
+\begin{DoxyCompactList}\small\item\em polecenie usuniecia rekordow usuwana jest lista rekordow pasujaca do dowolnej ilosci wybranych filtrow, pojedynczy rekord usunac mozna po nazwie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a503d2b0182afb20af936715931bb141f}\label{class_menu_a503d2b0182afb20af936715931bb141f}} 
+void {\bfseries sort\+Records} ()
+\begin{DoxyCompactList}\small\item\em polecenie posortowania rekordow sortuje po dwoch wlasciwosciach i pokazuje rekordy na ekranie, dla pojedynczej wlasciwosci podajemy dwa razy to samo \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a10e8b091ed3af6f7b1b721e6f09cd5c7}\label{class_menu_a10e8b091ed3af6f7b1b721e6f09cd5c7}} 
+void {\bfseries filter\+Records} () const
+\begin{DoxyCompactList}\small\item\em polecenie wyfiltrowania rekordow filtruje rekordy po dowolnej ilosci wlasciwosci i pokazuje je na ekranie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a0986ae8a29647fbb20c6858fde294f85}{add\+Category}} ()
+\begin{DoxyCompactList}\small\item\em polecenie dodania nowej kategorii \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_ac00850f70275e11358aeb21aac54af92}\label{class_menu_ac00850f70275e11358aeb21aac54af92}} 
+void {\bfseries remove\+Category} ()
+\begin{DoxyCompactList}\small\item\em polecenie usuniecia kategorii usuwa kategorie wraz z przynaleznymi do niej wpisami \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a4f9f8b58cfb2043a18758b42effb1298}{print\+Categorys}} () const
+\begin{DoxyCompactList}\small\item\em polecenie wyswietla liste kategorii \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_aa481861069b93fe4b9ce6846a597c340}{change\+Pass}} ()
+\begin{DoxyCompactList}\small\item\em polecenie zmienia haslo szyfrujace plik \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_menu_a3a422eb9e88e69829b57544b11eed7b6}\label{class_menu_a3a422eb9e88e69829b57544b11eed7b6}} 
+void {\bfseries change\+Path} ()
+\begin{DoxyCompactList}\small\item\em polecenie zmienia sciezke do zapisu pliku zmieniana jest sciezka ale zapis nie nastepuje samoczynnie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_menu_a0314c74e03731ffec7c670c3a46530a1}{save}} () const
+\begin{DoxyCompactList}\small\item\em polecenie zapisuje plik \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \mbox{\hyperlink{class_menu_a2e947941fb792d1957e5a23f4ebc510f}{list\+Records}} () const
+\begin{DoxyCompactList}\small\item\em zwraca liste o podanych wlasciwosciach \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_menu_a1e00a889daebe588a839c433b95f2426}{switch\+Edit}} (const std\+::string \&name, const std\+::string \&field, const std\+::string \&new\+Val)
+\begin{DoxyCompactList}\small\item\em wywoluje wybrana przez uzytkownika funkcje edycji \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{class_menu_a32c69408f1c072f4c853a80e69cc6a01}{add\+Pass}} ()
+\begin{DoxyCompactList}\small\item\em zleca dodanie hasla w zaleznosci od wyboru uzytkownika, wywoluje generator hasel lub dodaje haslo podane przez uzytkownika \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_menu_a44cc6b75bc153024e3cd9fb4a398135e}{get\+Limited\+String}} (const std\+::string \&credits)
+\begin{DoxyCompactList}\small\item\em broni przed podaniem niepozadanego lancucha znakow \end{DoxyCompactList}\item 
+static size\+\_\+t \mbox{\hyperlink{class_menu_ad3920dd6dd7c69da8c5f2301ca234650}{get\+Limited\+Value}} (const std\+::string \&credits, const size\+\_\+t \&max)
+\begin{DoxyCompactList}\small\item\em broni przed podaniem niepozadanego wartosci lub lancucha znakow \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_menu_ae5f00282e6384b77fa2e1f29fc1cd058}{is\+File\+Present}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em sprawdza czy plik istnieje \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_menu_aba9be93b12961fee566f50239008016f}{txt\+Sufix}} (const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em sprawdza czy adres dostal sufix .txt jesli adres go nie ma to sufix zostanie dodany \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_a1b9ecf674f0976144ac4432827f102c7}\label{class_menu_a1b9ecf674f0976144ac4432827f102c7}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+obiekt pozwala rozpoczac nawigacje po aplikacji Mithrandir 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a0986ae8a29647fbb20c6858fde294f85}\label{class_menu_a0986ae8a29647fbb20c6858fde294f85}} 
+\index{Menu@{Menu}!addCategory@{addCategory}}
+\index{addCategory@{addCategory}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addCategory()}{addCategory()}}
+{\footnotesize\ttfamily void Menu\+::add\+Category (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+polecenie dodania nowej kategorii 
+
+\mbox{\Hypertarget{class_menu_a32c69408f1c072f4c853a80e69cc6a01}\label{class_menu_a32c69408f1c072f4c853a80e69cc6a01}} 
+\index{Menu@{Menu}!addPass@{addPass}}
+\index{addPass@{addPass}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addPass()}{addPass()}}
+{\footnotesize\ttfamily std\+::string Menu\+::add\+Pass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+zleca dodanie hasla w zaleznosci od wyboru uzytkownika, wywoluje generator hasel lub dodaje haslo podane przez uzytkownika 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a588450dceb918209c6d7eda00230ac5e}\label{class_menu_a588450dceb918209c6d7eda00230ac5e}} 
+\index{Menu@{Menu}!addRecord@{addRecord}}
+\index{addRecord@{addRecord}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addRecord()}{addRecord()}}
+{\footnotesize\ttfamily void Menu\+::add\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+polecenie dodania rekordu 
+
+\mbox{\Hypertarget{class_menu_aa481861069b93fe4b9ce6846a597c340}\label{class_menu_aa481861069b93fe4b9ce6846a597c340}} 
+\index{Menu@{Menu}!changePass@{changePass}}
+\index{changePass@{changePass}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{changePass()}{changePass()}}
+{\footnotesize\ttfamily void Menu\+::change\+Pass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+polecenie zmienia haslo szyfrujace plik 
+
+\mbox{\Hypertarget{class_menu_a27d8ef1bffed3ff99662307602b3090e}\label{class_menu_a27d8ef1bffed3ff99662307602b3090e}} 
+\index{Menu@{Menu}!editRecord@{editRecord}}
+\index{editRecord@{editRecord}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{editRecord()}{editRecord()}}
+{\footnotesize\ttfamily void Menu\+::edit\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+polecenie edycji rekordu 
+
+\mbox{\Hypertarget{class_menu_a44cc6b75bc153024e3cd9fb4a398135e}\label{class_menu_a44cc6b75bc153024e3cd9fb4a398135e}} 
+\index{Menu@{Menu}!getLimitedString@{getLimitedString}}
+\index{getLimitedString@{getLimitedString}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getLimitedString()}{getLimitedString()}}
+{\footnotesize\ttfamily std\+::string Menu\+::get\+Limited\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{credits }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+broni przed podaniem niepozadanego lancucha znakow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em credits} & argument pozwala na wypisanie slow \char`\"{}zachety\char`\"{} dla uzytkownika\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ad3920dd6dd7c69da8c5f2301ca234650}\label{class_menu_ad3920dd6dd7c69da8c5f2301ca234650}} 
+\index{Menu@{Menu}!getLimitedValue@{getLimitedValue}}
+\index{getLimitedValue@{getLimitedValue}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getLimitedValue()}{getLimitedValue()}}
+{\footnotesize\ttfamily size\+\_\+t Menu\+::get\+Limited\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{credits,  }\item[{const size\+\_\+t \&}]{max }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+broni przed podaniem niepozadanego wartosci lub lancucha znakow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em credits} & argument pozwala na wypisanie slow \char`\"{}zachety\char`\"{} dla uzytkownika\\
+\hline
+{\em max} & argument pozwala na wprowadzenie limitu wartosci\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ade42a24a5451333ec3c62cd8c2861017}\label{class_menu_ade42a24a5451333ec3c62cd8c2861017}} 
+\index{Menu@{Menu}!hello@{hello}}
+\index{hello@{hello}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{hello()}{hello()}}
+{\footnotesize\ttfamily bool Menu\+::hello (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+menu powitalne, sprawdza haslo menu kaze sprawdza haslo i wczytuje zapisana baze, lub tworzy nowa i prosi o dodanie hasla 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_ae5f00282e6384b77fa2e1f29fc1cd058}\label{class_menu_ae5f00282e6384b77fa2e1f29fc1cd058}} 
+\index{Menu@{Menu}!isFilePresent@{isFilePresent}}
+\index{isFilePresent@{isFilePresent}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{isFilePresent()}{isFilePresent()}}
+{\footnotesize\ttfamily bool Menu\+::is\+File\+Present (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+sprawdza czy plik istnieje 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a2e947941fb792d1957e5a23f4ebc510f}\label{class_menu_a2e947941fb792d1957e5a23f4ebc510f}} 
+\index{Menu@{Menu}!listRecords@{listRecords}}
+\index{listRecords@{listRecords}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{listRecords()}{listRecords()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ Menu\+::list\+Records (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+zwraca liste o podanych wlasciwosciach 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a751db070b4585e710918aa639451a55d}\label{class_menu_a751db070b4585e710918aa639451a55d}} 
+\index{Menu@{Menu}!main@{main}}
+\index{main@{main}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily bool Menu\+::main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+podstawowe menu nawigacyjne menu pozwala nawigowac i wielokrotnie wykonywaz polecenia az do wywolania zadania zamkniecia 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_a4f9f8b58cfb2043a18758b42effb1298}\label{class_menu_a4f9f8b58cfb2043a18758b42effb1298}} 
+\index{Menu@{Menu}!printCategorys@{printCategorys}}
+\index{printCategorys@{printCategorys}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{printCategorys()}{printCategorys()}}
+{\footnotesize\ttfamily void Menu\+::print\+Categorys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+polecenie wyswietla liste kategorii 
+
+\mbox{\Hypertarget{class_menu_a0314c74e03731ffec7c670c3a46530a1}\label{class_menu_a0314c74e03731ffec7c670c3a46530a1}} 
+\index{Menu@{Menu}!save@{save}}
+\index{save@{save}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Menu\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+polecenie zapisuje plik 
+
+\mbox{\Hypertarget{class_menu_a1e00a889daebe588a839c433b95f2426}\label{class_menu_a1e00a889daebe588a839c433b95f2426}} 
+\index{Menu@{Menu}!switchEdit@{switchEdit}}
+\index{switchEdit@{switchEdit}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{switchEdit()}{switchEdit()}}
+{\footnotesize\ttfamily bool Menu\+::switch\+Edit (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{field,  }\item[{const std\+::string \&}]{new\+Val }\end{DoxyParamCaption})}
+
+
+
+wywoluje wybrana przez uzytkownika funkcje edycji 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+{\em field} & \\
+\hline
+{\em new\+Val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_menu_aba9be93b12961fee566f50239008016f}\label{class_menu_aba9be93b12961fee566f50239008016f}} 
+\index{Menu@{Menu}!txtSufix@{txtSufix}}
+\index{txtSufix@{txtSufix}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{txtSufix()}{txtSufix()}}
+{\footnotesize\ttfamily std\+::string Menu\+::txt\+Sufix (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+sprawdza czy adres dostal sufix .txt jesli adres go nie ma to sufix zostanie dodany 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+menu.\+hpp\item 
+menu.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,287 @@
+\hypertarget{class_database}{}\doxysection{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_database_a4703c80e6969d33565ea340f768fdadf}\label{class_database_a4703c80e6969d33565ea340f768fdadf}} 
+{\bfseries Database} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor, jaki jest kazdy widzi \char`\"{}\+Nowe Ateny\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_database_a8d73940aab9ea7baa6e45fa67c97fe63}\label{class_database_a8d73940aab9ea7baa6e45fa67c97fe63}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries get\+Cat} () const
+\item 
+\mbox{\Hypertarget{class_database_a859d5db33405d0d73d15b4688ff5681d}\label{class_database_a859d5db33405d0d73d15b4688ff5681d}} 
+std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ {\bfseries get\+Db} () const
+\item 
+\mbox{\Hypertarget{class_database_a0f6b0037cdae337f19963f2b03fe8166}\label{class_database_a0f6b0037cdae337f19963f2b03fe8166}} 
+std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ $\ast$ {\bfseries get\+Db\+Ptr} ()
+\item 
+bool \mbox{\hyperlink{class_database_a89543ede6ad20dad19ac814421940c2a}{is\+On\+Cat\+List}} (const std\+::string \&category) const
+\begin{DoxyCompactList}\small\item\em sprawdza czy podana kategoria widnieje juz w bazie \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_database_a3998d89fd0cec03a4afdc836701755da}{position\+On\+Cat\+List}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em podaje pozycje na liscie kategorii \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_a24023ceaaaec865672b7bb25f9899979}{add\+Category}} (const std\+::string \&category)
+\begin{DoxyCompactList}\small\item\em dodaje kategorie jesli jej jeszcze nie ma \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_a5ce505b9b030d2cc433acf12a4d534c1}{remove\+Category}} (const std\+::string \&category)
+\begin{DoxyCompactList}\small\item\em usuwa kategorie i wszystkie jej skladowe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a3c7be42903479b972e501451aac4050c}{print\+Categorys}} () const
+\begin{DoxyCompactList}\small\item\em pokazuje liste kategorii na ekranie \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_database_ab8731cddc92c93f15f4bee9047e97ea5}{is\+Present}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em sprawdza czy konto o danej nazwie jest wpisane do bazy \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_database_a190ec099ba897b149c304506f04dc445}{position}} (const std\+::string \&name) const
+\begin{DoxyCompactList}\small\item\em podaje pozycje konta o podanej nazwie w bazie \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_account}{Account}} $\ast$ \mbox{\hyperlink{class_database_aa1964f553808242ec1193587cf9cc7f6}{find}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em zwraca wskaznik dla podanego konta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a0faa13e3408899b27c3f3e5a9a0aee7c}{add}} (const \mbox{\hyperlink{class_account}{Account}} \&account)
+\begin{DoxyCompactList}\small\item\em dodaje konto do bazy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a330f23c01e63565080b8066232507958}{remove}} (const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&list\+Acc)
+\begin{DoxyCompactList}\small\item\em usuwa z bazy podane konta z listy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_database_a3c0c9de97fa911849dd7a7db3f635f21}{sort\+It}} (const size\+\_\+t \&first\+Filter, const size\+\_\+t \&second\+Filter)
+\begin{DoxyCompactList}\small\item\em sortuje baze wedlug 2 podanych atrybutow \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_database_aef161932f15720799bd55e27ea3db5b3}{pass\+Uses}} (const std\+::string \&pass) const
+\begin{DoxyCompactList}\small\item\em okresla stopien przywiazania do konkretnych ciagow znakowych \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_database_a14748c0dcf369c435dcd17d80cd1bb7e}{print}} (const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&list\+Acc)
+\begin{DoxyCompactList}\small\item\em pokazuje liste kont na ekranie \end{DoxyCompactList}\item 
+static std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \mbox{\hyperlink{class_database_a7b61d8fbc26cdbab0d741543c24cc803}{filter}} (const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&list\+Acc, const size\+\_\+t \&filter, const std\+::string \&val)
+\begin{DoxyCompactList}\small\item\em zwraca z zadanej listy kont, liste kont o zadanych kryteriach \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_a0faa13e3408899b27c3f3e5a9a0aee7c}\label{class_database_a0faa13e3408899b27c3f3e5a9a0aee7c}} 
+\index{Database@{Database}!add@{add}}
+\index{add@{add}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily void Database\+::add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_account}{Account}} \&}]{account }\end{DoxyParamCaption})}
+
+
+
+dodaje konto do bazy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_database_a24023ceaaaec865672b7bb25f9899979}\label{class_database_a24023ceaaaec865672b7bb25f9899979}} 
+\index{Database@{Database}!addCategory@{addCategory}}
+\index{addCategory@{addCategory}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{addCategory()}{addCategory()}}
+{\footnotesize\ttfamily bool Database\+::add\+Category (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{category }\end{DoxyParamCaption})}
+
+
+
+dodaje kategorie jesli jej jeszcze nie ma 
+
+
+\begin{DoxyParams}{Parameters}
+{\em category} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a7b61d8fbc26cdbab0d741543c24cc803}\label{class_database_a7b61d8fbc26cdbab0d741543c24cc803}} 
+\index{Database@{Database}!filter@{filter}}
+\index{filter@{filter}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{filter()}{filter()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ Database\+::filter (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&}]{list\+Acc,  }\item[{const size\+\_\+t \&}]{filter,  }\item[{const std\+::string \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+zwraca z zadanej listy kont, liste kont o zadanych kryteriach 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+Acc} & \\
+\hline
+{\em filter} & \\
+\hline
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aa1964f553808242ec1193587cf9cc7f6}\label{class_database_aa1964f553808242ec1193587cf9cc7f6}} 
+\index{Database@{Database}!find@{find}}
+\index{find@{find}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_account}{Account}} $\ast$ Database\+::find (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+zwraca wskaznik dla podanego konta 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a89543ede6ad20dad19ac814421940c2a}\label{class_database_a89543ede6ad20dad19ac814421940c2a}} 
+\index{Database@{Database}!isOnCatList@{isOnCatList}}
+\index{isOnCatList@{isOnCatList}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{isOnCatList()}{isOnCatList()}}
+{\footnotesize\ttfamily bool Database\+::is\+On\+Cat\+List (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{category }\end{DoxyParamCaption}) const}
+
+
+
+sprawdza czy podana kategoria widnieje juz w bazie 
+
+\mbox{\Hypertarget{class_database_ab8731cddc92c93f15f4bee9047e97ea5}\label{class_database_ab8731cddc92c93f15f4bee9047e97ea5}} 
+\index{Database@{Database}!isPresent@{isPresent}}
+\index{isPresent@{isPresent}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{isPresent()}{isPresent()}}
+{\footnotesize\ttfamily bool Database\+::is\+Present (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+sprawdza czy konto o danej nazwie jest wpisane do bazy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_aef161932f15720799bd55e27ea3db5b3}\label{class_database_aef161932f15720799bd55e27ea3db5b3}} 
+\index{Database@{Database}!passUses@{passUses}}
+\index{passUses@{passUses}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{passUses()}{passUses()}}
+{\footnotesize\ttfamily size\+\_\+t Database\+::pass\+Uses (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pass }\end{DoxyParamCaption}) const}
+
+
+
+okresla stopien przywiazania do konkretnych ciagow znakowych 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pass} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a190ec099ba897b149c304506f04dc445}\label{class_database_a190ec099ba897b149c304506f04dc445}} 
+\index{Database@{Database}!position@{position}}
+\index{position@{position}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{position()}{position()}}
+{\footnotesize\ttfamily size\+\_\+t Database\+::position (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+podaje pozycje konta o podanej nazwie w bazie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a3998d89fd0cec03a4afdc836701755da}\label{class_database_a3998d89fd0cec03a4afdc836701755da}} 
+\index{Database@{Database}!positionOnCatList@{positionOnCatList}}
+\index{positionOnCatList@{positionOnCatList}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{positionOnCatList()}{positionOnCatList()}}
+{\footnotesize\ttfamily size\+\_\+t Database\+::position\+On\+Cat\+List (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const}
+
+
+
+podaje pozycje na liscie kategorii 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a14748c0dcf369c435dcd17d80cd1bb7e}\label{class_database_a14748c0dcf369c435dcd17d80cd1bb7e}} 
+\index{Database@{Database}!print@{print}}
+\index{print@{print}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily void Database\+::print (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&}]{list\+Acc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+pokazuje liste kont na ekranie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+Acc} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_database_a3c7be42903479b972e501451aac4050c}\label{class_database_a3c7be42903479b972e501451aac4050c}} 
+\index{Database@{Database}!printCategorys@{printCategorys}}
+\index{printCategorys@{printCategorys}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{printCategorys()}{printCategorys()}}
+{\footnotesize\ttfamily void Database\+::print\+Categorys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+pokazuje liste kategorii na ekranie 
+
+\mbox{\Hypertarget{class_database_a330f23c01e63565080b8066232507958}\label{class_database_a330f23c01e63565080b8066232507958}} 
+\index{Database@{Database}!remove@{remove}}
+\index{remove@{remove}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Database\+::remove (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_account}{Account}} $>$ \&}]{list\+Acc }\end{DoxyParamCaption})}
+
+
+
+usuwa z bazy podane konta z listy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list\+Acc} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_database_a5ce505b9b030d2cc433acf12a4d534c1}\label{class_database_a5ce505b9b030d2cc433acf12a4d534c1}} 
+\index{Database@{Database}!removeCategory@{removeCategory}}
+\index{removeCategory@{removeCategory}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{removeCategory()}{removeCategory()}}
+{\footnotesize\ttfamily bool Database\+::remove\+Category (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{category }\end{DoxyParamCaption})}
+
+
+
+usuwa kategorie i wszystkie jej skladowe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em category} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_database_a3c0c9de97fa911849dd7a7db3f635f21}\label{class_database_a3c0c9de97fa911849dd7a7db3f635f21}} 
+\index{Database@{Database}!sortIt@{sortIt}}
+\index{sortIt@{sortIt}!Database@{Database}}
+\doxysubsubsection{\texorpdfstring{sortIt()}{sortIt()}}
+{\footnotesize\ttfamily void Database\+::sort\+It (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{first\+Filter,  }\item[{const size\+\_\+t \&}]{second\+Filter }\end{DoxyParamCaption})}
+
+
+
+sortuje baze wedlug 2 podanych atrybutow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first\+Filter} & atrubut uno\\
+\hline
+{\em second\+Filter} & atrubut drugie uno\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+database.\+hpp\item 
+database.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,51 @@
+\hypertarget{database_8hpp_source}{}\doxysection{database.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}account.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_database}{Database}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<std::string>\ listOfCategories;}
+\DoxyCodeLine{00019\ \ \ \ \ std::vector<Account>\ listOfAccounts;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_database_a4703c80e6969d33565ea340f768fdadf}{Database}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::string>\ getCat()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<Account>\ getDb()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<Account>*\ getDbPtr();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_database_a89543ede6ad20dad19ac814421940c2a}{isOnCatList}}(\textcolor{keyword}{const}\ std::string\ \&category)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_database_a3998d89fd0cec03a4afdc836701755da}{positionOnCatList}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_database_a24023ceaaaec865672b7bb25f9899979}{addCategory}}(\textcolor{keyword}{const}\ std::string\ \&category);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_database_a5ce505b9b030d2cc433acf12a4d534c1}{removeCategory}}(\textcolor{keyword}{const}\ std::string\ \&category);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_a3c7be42903479b972e501451aac4050c}{printCategorys}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_database_ab8731cddc92c93f15f4bee9047e97ea5}{isPresent}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_database_a190ec099ba897b149c304506f04dc445}{position}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{class_account}{Account}}*\ \mbox{\hyperlink{class_database_aa1964f553808242ec1193587cf9cc7f6}{find}}(\textcolor{keyword}{const}\ std::string\ \&\ name);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_a14748c0dcf369c435dcd17d80cd1bb7e}{print}}(\textcolor{keyword}{const}\ std::vector<Account>\&\ listAcc);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_a0faa13e3408899b27c3f3e5a9a0aee7c}{add}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_account}{Account}}\&\ account);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_a330f23c01e63565080b8066232507958}{remove}}(\textcolor{keyword}{const}\ std::vector<Account>\ \&listAcc);}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_database_a3c0c9de97fa911849dd7a7db3f635f21}{sortIt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&firstFilter,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&secondFilter);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Account>\ \mbox{\hyperlink{class_database_a7b61d8fbc26cdbab0d741543c24cc803}{filter}}(\textcolor{keyword}{const}\ std::vector<Account>\ \&listAcc,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&\mbox{\hyperlink{class_database_a7b61d8fbc26cdbab0d741543c24cc803}{filter}},\ \textcolor{keyword}{const}\ std::string\ \&val);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_database_aef161932f15720799bd55e27ea3db5b3}{passUses}}(\textcolor{keyword}{const}\ std::string\&\ pass)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ }
+
+\end{DoxyCode}
