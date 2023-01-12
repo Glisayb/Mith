@@ -10,12 +10,12 @@ char PassRandomizer::randLetter() { return ((rand() % 25) + 97); }
 
 std::string PassRandomizer::randPass() {
 		
-	int length = limit, capitals = limit, specials = limit, letPrint, caps_spes;
-	std::string	pass;
+	int length, capitals, specials, caps_spes;
+	std::string	pass, letPrint;
 
-	length = getLimitedInt("Podaj dlugosc", limit);
-	capitals = getLimitedInt("Podaj ilosc wielkich liter", length);
-	specials = getLimitedInt("Podaj ilosc znakow specjalnych : ", length - capitals);
+	length = getLimitedValue("Podaj dlugosc", limit);
+	capitals = getLimitedValue("Podaj ilosc wielkich liter", length);
+	specials = getLimitedValue("Podaj ilosc znakow specjalnych : ", length - capitals);
 
 	caps_spes = capitals + specials;
 
@@ -37,7 +37,7 @@ std::string PassRandomizer::randPass() {
 	}
 	std::cout << "Jesli chcesz zobaczyc haslo na ekranie wpisz 0 : " << std::endl;
 	std::cin >> letPrint;
-	if (letPrint == 0) { std::cout << pass << std::endl; }
+	if (letPrint == "0") { std::cout << pass << std::endl; }
 	return pass;
 }
 
@@ -55,7 +55,7 @@ int PassRandomizer::ratePassSafty(std::string pass) {
 	return rating;
 }
 
-int PassRandomizer::getLimitedInt(std::string const credits, size_t limit) {
+int PassRandomizer::getLimitedValue(std::string const credits, size_t limit) {
 	size_t size = limit;
 	std::string stringIn;
 	while (size >= limit) {

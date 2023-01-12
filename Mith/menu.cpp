@@ -128,25 +128,29 @@ void Menu::editRecord(Database& db)
 {
 	std::string name, field, newVal;
 	bool exit = false;
-	{
-		{
-			{
-				std::cout << "Podaj nazwe rekordu : " << std::endl;
-				std::cin >> name;
-
-				std::cout << "0 - Wyjdz : " << std::endl;
-				std::cout << "1 - Nazwa : " << std::endl;
-				std::cout << "2 - Haslo : " << std::endl;
-				std::cout << "3 - Kategoria : " << std::endl;
-				std::cout << "4 - Strona : " << std::endl;
-				std::cout << "5 - Login : " << "\n";
-			}
-			std::cout << "Podaj pole do edycji - liczba : " << "\n";
-			std::cin >> field;
-		}
-		std::cout << "Podaj nowa wartosc : " << "\n";
-		std::cin >> newVal; }
-	exit = switchEdit(db, name, field, newVal);
+	bool correctName = false;
+	while (!correctName) {
+		std::cout << "Podaj nazwe rekordu lub 0 by wyjsc : " << std::endl;
+		std::cin >> name;
+		correctName = db.isPresent(name);
+		if (name == "0") { exit = true; break; }
+		if (!correctName) { std::cout << "Podana niepoprawna nazwe" << std::endl; }
+	}
+	if (exit == false) {
+		
+			std::cout << "0 - Wyjdz : " << std::endl;
+			std::cout << "1 - Nazwa : " << std::endl;
+			std::cout << "2 - Haslo : " << std::endl;
+			std::cout << "3 - Kategoria : " << std::endl;
+			std::cout << "4 - Strona : " << std::endl;
+			std::cout << "5 - Login : " << "\n";					
+				
+		std::cout << "Podaj pole do edycji - liczba : " << "\n";
+		std::cin >> field;
+			
+		newVal = getLimitedString("Podaj nowa wartosc : ");
+		exit = switchEdit(db, name, field, newVal);
+	}
 };
 
 void Menu::removeRecords(Database &db) {
@@ -223,9 +227,9 @@ std::vector<Account> Menu::listRecords(Database& db) {
 		std::cout << "4 | 9 - Strona" << std::endl;
 		std::cout << "5 | 10 - Login" << std::endl;
 		std::cout << "Wybierz " << j + 1 << " filtr | +5 dla wartosci wzglednych :" << std::endl;
-		std::cin >> filter;
-		std::cout << "Podaj wartosc" << std::endl;
-		std::cin >> val;
+
+		filter = getLimitedValue("",10);
+		val = getLimitedString("Podaj wartosc");
 
 		listAcc = Database::filter(listAcc, filter, val);
 	}
@@ -244,20 +248,19 @@ std::string Menu::addPass() {
 bool Menu::switchEdit(Database& db, std::string const name, std::string const field, std::string const newVal) {
 	bool exit = false;
 	Account* acc = db.find(name);
-	//std::cout << "accPtr : " << acc << std::endl;
 	switch (stoi(field)) {
 	case 0:	exit = true; break;
 	case 1: acc->setName(newVal); break;
-	//case 2: acc->setPass(newVal); break;
-	//case 3: acc->setCategory(newVal); break;
-	//case 4: acc->setWebsite(newVal); break;
-	//case 5: acc->setLogin(newVal); break;
+	case 2: acc->setPass(newVal); break;
+	case 3: acc->setCategory(newVal); break;
+	case 4: acc->setWebsite(newVal); break;
+	case 5: acc->setLogin(newVal); break;
 	default: std::cout << "Podales bledna wartosc pola" << std::endl; break;
 	}
 	return exit;
 }
 
-std::string Menu::getLimitedString(std::string const credits) {
+std::string Menu::getLimitedString(const std::string credits) {
 	std::string stringIn;
 	size_t size = limit;
 	while (size >= limit) {
@@ -267,6 +270,25 @@ std::string Menu::getLimitedString(std::string const credits) {
 		size = stringIn.length();
 	}
 	return stringIn;
+}
+
+size_t Menu::getLimitedValue(const std::string  credits, const size_t max) {
+	std::string stringIn;
+	size_t value = max+1;
+	while (value > max) {
+		std::cout << credits << std::endl;
+		std::cin >> stringIn;
+		try
+		{
+			value = stoi(stringIn);
+		}
+		catch (const std::exception&)
+		{
+			std::cout << "!!!Nie podano liczby!!!" << std::endl;
+		}		
+		if (value>max){ std::cout << "Liczba spoza oczekiwanych wartosci" << std::endl; }
+	}
+	return value;
 }
 
 bool Menu::isFilePresent(const std::string& name) {

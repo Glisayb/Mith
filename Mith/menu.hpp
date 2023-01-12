@@ -8,6 +8,8 @@
 
 class Menu
 {
+private:
+	
 public:
 
 	static bool hello(Database &db);
@@ -27,13 +29,14 @@ public:
 	static void changePass(std::string &pass);
 	static void changePath(std::string& path);
 
-	static void save(Database& db, std::string const pass, std::string const path);
+	static void save(Database& db, const std::string pass, const std::string path);
 
 	static std::vector<Account> listRecords(Database& db);
 	static std::string addPass();
-	static bool switchEdit(Database& db, std::string const name, std::string const field, std::string const newVal);
+	static bool switchEdit(Database& db, const std::string name, const std::string field, const std::string newVal);
 
-	static std::string getLimitedString(std::string const credits);
+	static std::string getLimitedString(const std::string credits);
+	static size_t getLimitedValue(const std::string credits, const size_t max);
 	static bool isFilePresent(const std::string& name);
 	static std::string txtSufix(const std::string path);
 };

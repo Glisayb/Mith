@@ -69,13 +69,7 @@ size_t Database::position(std::string name) const {
 
 Account* Database::find(std::string name) {
 	auto db = this->getDbPtr();
-	std::vector<Account> guwno = *db;
-	//int i = 0;
-	//for (auto& account : guwno)
-	//{
-	//	if (account.getName() == name) { i = account; }
-	//}
-	return &db->at(2);
+	return &db->at(position(name));
 }
 
 size_t Database::passUses(std::string pass) const {
@@ -95,7 +89,6 @@ void Database::print(std::vector<Account> listAcc){
 void Database::add(const Account& account) {
 	if (!isPresent(account.getName())) {
 		listOfAccounts.push_back(account);
-		//std::cout << "Konto : " << account.getName() << " - dopisane" << std::endl;
 	}
 	else { std::cout << "Konto : " << account.getName() << " juz istnieje" << std::endl;
 	}
@@ -156,7 +149,7 @@ void Database::sortIt(size_t firstFilter, size_t secondFilter) {
 		{
 		case 1: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
-				return x.getName().compare(y.getName()) < 0;
+				return strcmp(x.getName().c_str() , y.getName().c_str()) > 0;
 			});
 		case 2: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
@@ -164,7 +157,7 @@ void Database::sortIt(size_t firstFilter, size_t secondFilter) {
 			});
 		case 3: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
-				return x.getCategory().compare(y.getCategory()) < 0;
+				return strcmp(x.getCategory().c_str(), y.getCategory().c_str()) > 0;
 			}); 
 		case 4: std::sort(listOfAccounts.begin(), listOfAccounts.end(), [](Account x, Account y)
 			{
@@ -178,7 +171,3 @@ void Database::sortIt(size_t firstFilter, size_t secondFilter) {
 		}
 	}
 }
-
-
-
-

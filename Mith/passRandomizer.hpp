@@ -12,7 +12,7 @@ public:
 
 	int static ratePassSafty(std::string const pass);
 
-	int static getLimitedInt(std::string const credits, size_t limit);
+	int static getLimitedValue(std::string const credits, size_t limit);
 
 };
 
