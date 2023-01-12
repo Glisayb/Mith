@@ -14,13 +14,29 @@ private:
 	std::string pass;
 
 public:
-
+	/// obiekt pozwala rozpoczac nawigacje po aplikacji Mithrandir
+	/// 
+	/// </summary>
+	/// <param name="path"></param>
 	Menu(std::string path);
-
+	/// menu powitalne, sprawdza haslo
+	/// 
+	/// menu kaze sprawdza haslo i wczytuje zapisana baze, lub tworzy nowa i prosi o dodanie hasla
+	/// <returns></returns>
 	bool hello();
+	/// podstawowe menu nawigacyjne
+	/// 
+	/// menu pozwala nawigowac i wielokrotnie wykonywaz polecenia az do wywolania zadania zamkniecia
+	/// <returns></returns>
 	bool main();
 
+	/// polecenie dodania rekordu
+	/// 
+	/// </summary>
 	void addRecord();
+	/// polecenie edycji rekordu<summary>
+	/// dupa
+	/// </summary>
 	void editRecord();
 	void removeRecords();
 	void sortRecords();

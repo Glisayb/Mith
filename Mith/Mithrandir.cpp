@@ -19,9 +19,9 @@ int main()
         std::cout << "    - 0 by uzyc pliku domyslnego" << std::endl;
         std::cin >> path;        
 
-    Menu menu(path);
+    Menu gandalf(path);
 
-    menu.hello();
+    gandalf.hello();
 
     //db1.addCategory("medycyna alternatywna");
     //db1.addCategory("UFO");
@@ -34,6 +34,8 @@ int main()
     //db1.add(ac3);
 
     //bool correct = Menu::hello(db1);
+
+
         
 }
 
